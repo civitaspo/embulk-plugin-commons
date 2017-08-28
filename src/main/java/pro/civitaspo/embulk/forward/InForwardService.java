@@ -172,7 +172,7 @@ public class InForwardService
     protected void shutDown()
             throws Exception
     {
-        ElapsedTime.measurePolling(new ElapsedTime.Pollable<Void>() {
+        ElapsedTime.measureWithPolling(new ElapsedTime.Pollable<Void>() {
             private CompletableFuture<Void> future;
 
             @Override
@@ -218,7 +218,7 @@ public class InForwardService
     protected void run()
             throws Exception
     {
-        ElapsedTime.measurePolling(new ElapsedTime.Pollable<Void>() {
+        ElapsedTime.measureWithPolling(new ElapsedTime.Pollable<Void>() {
             @Override
             public boolean poll()
             {

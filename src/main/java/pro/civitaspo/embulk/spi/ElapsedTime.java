@@ -58,7 +58,7 @@ public class ElapsedTime
         }
     }
 
-    public static <T> T measurePolling(Pollable<T> pollable)
+    public static <T> T measureWithPolling(Pollable<T> pollable)
     {
         long start = getNow();
         pollable.onStart();

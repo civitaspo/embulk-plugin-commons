@@ -2,7 +2,7 @@ package pro.civitaspo.embulk.spi;
 
 public class ElapsedTime
 {
-    private final static long POLLING_INTERVAL = 1_000; // ms
+    private final static long DEFAULT_POLLING_INTERVAL = 1_000; // ms
 
     private static long getNow()
     {
@@ -14,10 +14,10 @@ public class ElapsedTime
         return System.currentTimeMillis() - start;
     }
 
-    private static void waitUntilNextPolling()
+    private static void waitUntilNextPolling(long pollingInterval)
     {
         try {
-            Thread.sleep(POLLING_INTERVAL);
+            Thread.sleep(pollingInterval);
         }
         catch (InterruptedException e) {
             // Do Nothing
@@ -58,7 +58,7 @@ public class ElapsedTime
         }
     }
 
-    public static <T> T measureWithPolling(Pollable<T> pollable)
+    public static <T> T measureWithPolling(long pollingInterval, Pollable<T> pollable)
     {
         long start = getNow();
         pollable.onStart();
@@ -72,7 +72,12 @@ public class ElapsedTime
                 }
             }
             pollable.onWaiting(getElapsed(start));
-            waitUntilNextPolling();
+            waitUntilNextPolling(pollingInterval);
         }
+    }
+
+    public static <T> T measureWithPolling(Pollable<T> pollable)
+    {
+        return measureWithPolling(DEFAULT_POLLING_INTERVAL, pollable);
     }
 }

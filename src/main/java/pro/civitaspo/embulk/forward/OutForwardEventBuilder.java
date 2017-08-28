@@ -5,8 +5,6 @@ import com.google.common.collect.Maps;
 import org.embulk.spi.Column;
 import org.embulk.spi.Schema;
 import org.embulk.spi.time.Timestamp;
-import org.embulk.spi.time.TimestampFormatter;
-import org.msgpack.core.MessagePack;
 import org.msgpack.value.Value;
 import pro.civitaspo.embulk.spi.DataBuilder;
 

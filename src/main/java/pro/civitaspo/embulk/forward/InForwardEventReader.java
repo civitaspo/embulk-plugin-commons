@@ -1,23 +1,15 @@
 package pro.civitaspo.embulk.forward;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import influent.EventStream;
 import org.embulk.spi.Column;
 import org.embulk.spi.Schema;
-import org.embulk.spi.json.JsonParser;
 import org.embulk.spi.time.Timestamp;
-import org.embulk.spi.time.TimestampParser;
-import org.embulk.spi.util.Timestamps;
 import org.msgpack.value.Value;
 import pro.civitaspo.embulk.spi.DataReader;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class InForwardEventReader
         implements DataReader

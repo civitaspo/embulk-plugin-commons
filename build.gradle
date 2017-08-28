@@ -10,5 +10,9 @@ repositories {
 }
 
 dependencies {
+    compile 'org.embulk:embulk-core:0.8.30'
+    compile 'com.google.guava:guava:23.0'
+    compile 'org.komamitsu:fluency:1.4.0'
+    compile 'com.okumin:influent-java:0.3.0'
     testCompile 'junit:junit:4.12'
 }

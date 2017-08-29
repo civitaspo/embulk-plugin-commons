@@ -63,7 +63,7 @@ public class OutForwardService
         Optional<Integer> getWaitUntilFlusherTerminated();
     }
 
-    public interface ParentTask
+    public interface Task
             extends ForwardParentTask
     {
         @Config("out_forward")
@@ -71,7 +71,7 @@ public class OutForwardService
         OutForwardTask getOutForwardTask();
     }
 
-    public static void sendShutdownMessage(ParentTask task)
+    public static void sendShutdownMessage(Task task)
     {
         logger.info("OutForwardService: Send a Shutdown Message.");
         OutForwardService outForward = new OutForwardService(task);
@@ -80,10 +80,10 @@ public class OutForwardService
         outForward.close();
     }
 
-    private final ParentTask task;
+    private final Task task;
     private final Fluency client;
 
-    public OutForwardService(ParentTask task)
+    public OutForwardService(Task task)
     {
         this.task = task;
         this.client = newFluency(task.getOutForwardTask());

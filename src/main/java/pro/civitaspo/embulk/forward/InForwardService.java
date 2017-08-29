@@ -55,7 +55,7 @@ public class InForwardService
         Optional<Boolean> getTcpNoDelayEnabled();
     }
 
-    public interface ParentTask
+    public interface Task
             extends ForwardParentTask
     {
         @Config("in_forward")
@@ -65,14 +65,14 @@ public class InForwardService
 
     public static class Builder
     {
-        private ParentTask task;
+        private Task task;
         private Consumer<EventStream> eventConsumer;
 
         public Builder()
         {
         }
 
-        public Builder task(ParentTask task)
+        public Builder task(Task task)
         {
             this.task = task;
             return this;
@@ -95,11 +95,11 @@ public class InForwardService
         return new Builder();
     }
 
-    private final ParentTask task;
+    private final Task task;
     private final ForwardServer server;
     private final AtomicBoolean shouldShutdown = new AtomicBoolean(false);
 
-    private InForwardService(ParentTask task, Consumer<EventStream> eventConsumer)
+    private InForwardService(Task task, Consumer<EventStream> eventConsumer)
     {
         this.task = task;
         this.server = buildServer(task.getInForwardTask(), eventConsumer);

@@ -11,7 +11,7 @@ public class AsyncEmbulkRunnerService
     private static final Logger logger = Exec.getLogger(AsyncEmbulkRunnerService.class);
     private final EmbulkRunner runner;
 
-    AsyncEmbulkRunnerService(EmbulkRunner runner)
+    public AsyncEmbulkRunnerService(EmbulkRunner runner)
     {
         this.runner = runner;
     }

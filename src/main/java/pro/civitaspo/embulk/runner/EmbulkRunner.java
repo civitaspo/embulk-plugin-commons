@@ -99,6 +99,7 @@ public class EmbulkRunner
 
     public ExecutionResult run()
     {
+        // TODO: expose config without secret configurations.
         return ElapsedTime.measure(new ElapsedTime.Measurable<ExecutionResult>()
         {
             @Override

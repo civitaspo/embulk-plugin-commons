@@ -129,6 +129,7 @@ public class InForwardService
         if (t.getTcpNoDelayEnabled().isPresent()) {
             builder.tcpNoDelayEnabled(t.getTcpNoDelayEnabled().get());
         }
+        // TODO: builder.workerPoolSize(1);
 
         return builder.build();
     }

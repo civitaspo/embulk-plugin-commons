@@ -1,6 +1,5 @@
 package pro.civitaspo.embulk.spi;
 
-import org.embulk.filter.join_file.table.Table;
 import org.embulk.spi.Column;
 import org.embulk.spi.Schema;
 import org.embulk.spi.time.Timestamp;

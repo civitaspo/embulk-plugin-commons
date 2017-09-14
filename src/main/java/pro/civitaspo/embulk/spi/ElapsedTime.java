@@ -62,17 +62,15 @@ public class ElapsedTime
     {
         long start = getNow();
         pollable.onStart();
-        while (true) {
-            if (pollable.poll()) {
-                try {
-                    return pollable.getResult();
-                }
-                finally {
-                    pollable.onFinished(getElapsed(start));
-                }
-            }
+        while (!pollable.poll()) {
             pollable.onWaiting(getElapsed(start));
             waitUntilNextPolling(pollingInterval);
+        }
+        try {
+            return pollable.getResult();
+        }
+        finally {
+            pollable.onFinished(getElapsed(start));
         }
     }
 
